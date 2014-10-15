@@ -28,7 +28,7 @@ RUN \
   chmod +x confd && \
   mkdir -p /etc/confd/{conf.d,templates}
 
-RUN rm /etc/nginx/sites-enabled/default
+RUN rm -f /etc/nginx/sites-enabled/default
 RUN rm /etc/nginx/nginx.conf
 
 ADD nginx.tmpl /etc/confd/templates/nginx.tmpl
