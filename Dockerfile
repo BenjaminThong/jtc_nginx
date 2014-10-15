@@ -22,14 +22,14 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get -y install vim wget curl bridge-utils && \
+  apt-get -y install vim wget nginx curl bridge-utils && \
   cd /usr/local/bin && \
   curl -L https://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -o confd && \
   chmod +x confd && \
   mkdir -p /etc/confd/{conf.d,templates}
 
 RUN rm -f /etc/nginx/sites-enabled/default
-RUN rm /etc/nginx/nginx.conf
+RUN rm -r /etc/nginx/nginx.conf
 
 ADD nginx.tmpl /etc/confd/templates/nginx.tmpl
 ADD nginx.conf /etc/nginx/nginx.conf
