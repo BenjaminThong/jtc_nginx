@@ -31,6 +31,7 @@ RUN \
 RUN rm -f /etc/nginx/sites-enabled/default
 RUN rm -r /etc/nginx/nginx.conf
 
+ADD nginx.toml /etc/confd/conf.d/nginx.toml
 ADD nginx.tmpl /etc/confd/templates/nginx.tmpl
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD confd-watch /usr/local/bin/confd-watch
