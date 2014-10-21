@@ -40,7 +40,7 @@ RUN chmod 755 /usr/local/bin/confd-watch
 
 
 # Expose port
-EXPOSE 3000
+EXPOSE 80
 
 # start couchbase
 CMD ["/bin/bash"]
