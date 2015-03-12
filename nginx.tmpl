@@ -75,7 +75,9 @@ server {
         #proxy_set_header  X-Forwarded-Proto $scheme;
         #proxy_set_header  Host $http_host;
 
-        proxy_set_header  Authorization $http_authorization;
-        proxy_pass_header Authorization;
+        #proxy_set_header  Authorization $http_authorization;
+        #proxy_pass_header Authorization;
+        more_set_input_headers  'Authorization: $http_authorization';
+        more_set_headers        -s 401 'WWW-Authenticate: Basic realm="intranet.example.com"';
     }
 }

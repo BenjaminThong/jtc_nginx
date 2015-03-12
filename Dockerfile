@@ -22,7 +22,13 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get -y install vim wget nginx curl bridge-utils && \
+  apt-get -y install vim wget curl bridge-utils && \
+  wget 'http://nginx.org/download/nginx-1.7.7.tar.gz' && \
+  tar -xzvf nginx-1.7.7.tar.gz && \
+  cd nginx-1.7.7/ && \
+  ./configure --prefix=/opt/nginx --add-module=/path/to/headers-more-nginx-module && \
+  make && \
+  make install && \
   cd /usr/local/bin && \
   curl -L https://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -o confd && \
   chmod +x confd && \
