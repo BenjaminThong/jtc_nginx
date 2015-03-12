@@ -38,7 +38,7 @@ RUN \
   mkdir -p /etc/confd/templates
 
 RUN rm -f /etc/nginx/sites-enabled/default
-RUN rm -r /etc/nginx/nginx.conf
+RUN rm -f /etc/nginx/nginx.conf
 
 ADD nginx.toml /etc/confd/conf.d/nginx.toml
 ADD nginx.tmpl /etc/confd/templates/nginx.tmpl
