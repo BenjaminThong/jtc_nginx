@@ -22,11 +22,13 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get -y install vim wget curl bridge-utils && \
+  apt-get -y install vim wget curl bridge-utils build-essential libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev && \
+  wget 'https://github.com/openresty/headers-more-nginx-module/archive/v0.25.tar.gz' && \
   wget 'http://nginx.org/download/nginx-1.7.7.tar.gz' && \
+  tar -xzvf v0.25.tar.gz && \
   tar -xzvf nginx-1.7.7.tar.gz && \
   cd nginx-1.7.7/ && \
-  ./configure --prefix=/opt/nginx --add-module=/path/to/headers-more-nginx-module && \
+  ./configure --sbin-path=/usr/sbin --with-http_ssl_module --add-module=../headers-more-nginx-module-0.25 && \
   make && \
   make install && \
   cd /usr/local/bin && \
