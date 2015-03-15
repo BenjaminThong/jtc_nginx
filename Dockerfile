@@ -25,6 +25,7 @@ RUN \
   apt-get -y install vim wget curl bridge-utils build-essential libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev && \
   wget 'https://github.com/openresty/headers-more-nginx-module/archive/v0.25.tar.gz' && \
   wget 'http://nginx.org/download/nginx-1.7.7.tar.gz' && \
+  wget 'https://raw.githubusercontent.com/JasonGiedymin/nginx-init-ubuntu/master/nginx' -O /etc/init.d/nginx && \
   tar -xzvf v0.25.tar.gz && \
   tar -xzvf nginx-1.7.7.tar.gz && \
   cd nginx-1.7.7/ && \
@@ -34,11 +35,14 @@ RUN \
   cd /usr/local/bin && \
   curl -L https://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -o confd && \
   chmod +x confd && \
+  mkdir -p /etc/nginx/sites-enabled && \
   mkdir -p /etc/confd/conf.d && \
   mkdir -p /etc/confd/templates
 
 RUN rm -f /etc/nginx/sites-enabled/default
 RUN rm -f /etc/nginx/nginx.conf
+RUN chmod +x /etc/init.d/nginx
+RUN /usr/sbin/update-rc.d -f nginx defaults
 
 ADD nginx.toml /etc/confd/conf.d/nginx.toml
 ADD nginx.tmpl /etc/confd/templates/nginx.tmpl
