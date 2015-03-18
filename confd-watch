@@ -23,9 +23,9 @@ echo "[nginx] confd is now monitoring etcd for changes..."
 echo "[nginx] starting nginx service..."
 touch /data/access_node.log
 touch /data/error_node.log
-touch /data/access_nginx.log
-touch /data/error_nginx.log
-/usr/sbin/nginx -c /etc/nginx/sites-enabled/app.conf
+touch /data/access_couch.log
+touch /data/error_couch.log
+/usr/sbin/nginx -c /etc/nginx/nginx.conf
 
 # Follow the logs to allow the script to continue running
 tail -f /data/*.log

@@ -50,8 +50,8 @@ server {
     ssl_certificate     /data/domain.crt;
     ssl_certificate_key /data/domain.key;
 
-    access_log /data/access_nginx.log upstreamlog;
-    error_log /data/error_nginx.log;
+    access_log /data/access_couch.log upstreamlog;
+    error_log /data/error_couch.log;
 
     location / {
         proxy_pass http://couchbase_pool;
