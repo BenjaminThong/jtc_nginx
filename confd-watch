@@ -25,7 +25,7 @@ touch /data/access_node.log
 touch /data/error_node.log
 touch /data/access_nginx.log
 touch /data/error_nginx.log
-/usr/sbin/nginx
+/usr/sbin/nginx -c /etc/nginx/sites-enabled/app.conf
 
 # Follow the logs to allow the script to continue running
 tail -f /data/*.log
