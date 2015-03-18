@@ -21,7 +21,10 @@ echo "[nginx] confd is now monitoring etcd for changes..."
 
 # Start the Nginx service using the generated config
 echo "[nginx] starting nginx service..."
-touch /data/dummp.log
+touch /data/access_node.log
+touch /data/error_node.log
+touch /data/access_nginx.log
+touch /data/error_nginx.log
 /usr/sbin/nginx
 
 # Follow the logs to allow the script to continue running
