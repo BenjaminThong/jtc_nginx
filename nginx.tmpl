@@ -12,7 +12,8 @@ upstream couchbase_pool {
 }
 
 server {
-   listen 80;
+   listen 80 default_server;
+   server_name .jumpthecut.com;
    return 301 https://www.jumpthecut.com$request_uri;
 }
 
