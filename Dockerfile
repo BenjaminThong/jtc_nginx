@@ -3,7 +3,7 @@
 #
 
 # Pull base image
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 
 # User limits
 RUN sed -i.bak '/\# End of file/ i\\# Following 4 lines added by docker-couchbase-server' /etc/security/limits.conf
